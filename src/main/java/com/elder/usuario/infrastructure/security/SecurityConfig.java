@@ -21,12 +21,12 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
 
     // Instâncias de JwtUtil e UserDetailsService injetadas pelo Spring
-    private final com.jimpo.apirestjava.infrastructure.security.JwtUtil jwtUtil;
+    private final com.elder.usuario.infrastructure.security.JwtUtil jwtUtil;
     private final UserDetailsService userDetailsService;
 
     // Construtor para injeção de dependências de JwtUtil e UserDetailsService
     @Autowired
-    public SecurityConfig(com.jimpo.apirestjava.infrastructure.security.JwtUtil jwtUtil, UserDetailsService userDetailsService) {
+    public SecurityConfig(com.elder.usuario.infrastructure.security.JwtUtil jwtUtil, UserDetailsService userDetailsService) {
         this.jwtUtil = jwtUtil;
         this.userDetailsService = userDetailsService;
     }
