@@ -1,6 +1,6 @@
 package com.elder.usuario.infrastructure.repository;
 
-import com.jimpo.apirestjava.infrastructure.entity.Address;
+import com.elder.usuario.infrastructure.entity.Address;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
