@@ -119,4 +119,24 @@ public class UserConverter {
 						.number(dto.getNumber() != null ? dto.getNumber() : entity.getNumber())
 						.build();
 	}
+	
+	public Address forAddressEntity(AddressDTO dto, Long idUser) {
+		return Address.builder()
+						.street(dto.getStreet())
+						.number(dto.getNumber())
+						.city(dto.getCity())
+						.cep(dto.getCep())
+						.complement(dto.getComplement())
+						.state(dto.getState())
+						.user_id(idUser)
+						.build();
+	}
+	
+	public Phone forPhoneEntity(PhoneDTO dto, Long idUser) {
+		return Phone.builder()
+						.number(dto.getNumber())
+						.ddd(dto.getDdd())
+						.user_id(idUser)
+						.build();
+	}
 }

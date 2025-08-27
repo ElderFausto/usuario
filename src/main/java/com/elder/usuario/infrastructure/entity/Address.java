@@ -32,4 +32,7 @@ public class Address {
 	
 	@Column(name = "cep")
 	private String cep;
+	
+	@Column(name = "user_id")
+	private Long user_id;
 }
