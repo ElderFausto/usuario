@@ -86,4 +86,14 @@ public class UserConverter {
 						.build();
 	}
 	
+	public Users updateUser(UserDTO userDTO, Users entity) {
+		return Users.builder()
+						.name(userDTO.getName() != null ? userDTO.getName() : entity.getName())
+						.id(entity.getId())
+						.password(userDTO.getPassword() != null ? userDTO.getPassword() : entity.getPassword())
+						.email(userDTO.getEmail() != null ? userDTO.getEmail() : entity.getEmail())
+						.address(entity.getAddress())
+						.phone(entity.getPhone())
+						.build();
+	}
 }
