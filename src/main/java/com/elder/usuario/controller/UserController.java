@@ -1,8 +1,9 @@
 package com.elder.usuario.controller;
 
 import com.elder.usuario.business.UserService;
+import com.elder.usuario.business.dto.AddressDTO;
+import com.elder.usuario.business.dto.PhoneDTO;
 import com.elder.usuario.business.dto.UserDTO;
-import com.elder.usuario.infrastructure.entity.Users;
 import com.elder.usuario.infrastructure.security.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +36,7 @@ public class UserController {
 	}
 	
 	@GetMapping
-	public ResponseEntity<Users> findUsersEmail(@RequestParam("email") String email) {
+	public ResponseEntity<UserDTO> findUsersEmail(@RequestParam("email") String email) {
 		return ResponseEntity.ok(userService.searchUserByEmail(email));
 	}
 	
@@ -43,5 +44,23 @@ public class UserController {
 	public ResponseEntity<Void> deleteUsersByEmail(@PathVariable String email) {
 		userService.deleteUserByEmail(email);
 		return ResponseEntity.ok().build();
+	}
+	
+	@PutMapping
+	public ResponseEntity<UserDTO> updateUserData(@RequestBody UserDTO dto,
+	                                              @RequestHeader("Authorization") String token) {
+		return ResponseEntity.ok(userService.updateUserData(token, dto));
+	}
+	
+	@PutMapping("/address")
+	public ResponseEntity<AddressDTO> updateAddress(@RequestBody AddressDTO dto,
+	                                                @RequestParam("id") Long id) {
+		return ResponseEntity.ok(userService.updateAddress(id, dto));
+	}
+	
+	@PutMapping("/phone")
+	public ResponseEntity<PhoneDTO> updateAddress(@RequestBody PhoneDTO dto,
+	                                              @RequestParam("id") Long id) {
+		return ResponseEntity.ok(userService.updatePhone(id, dto));
 	}
 }
